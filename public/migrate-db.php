@@ -9,6 +9,7 @@ require __DIR__.'/../vendor/autoload.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
 
 // Security validation: Only allow execution with the correct secret key
 $secretKey = env('ARTICLE_API_KEY', 'rbtgtech_agent_secret_2026');

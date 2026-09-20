@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Profile Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191b23",
+                        "on-secondary-container": "#5e6570",
+                        "tertiary-fixed-dim": "#c0c6d9",
+                        "on-surface-variant": "#424654",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#6e7585",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "inverse-surface": "#2e3038",
+                        "on-tertiary-fixed-variant": "#404756",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e1e2ec",
+                        "on-secondary-fixed": "#151c25",
+                        "primary-container": "#246fea",
+                        "surface-variant": "#e1e2ec",
+                        "on-secondary-fixed-variant": "#404751",
+                        "primary-fixed": "#d9e2ff",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#fefcff",
+                        "tertiary-fixed": "#dce2f5",
+                        "secondary-fixed": "#dce3f0",
+                        "outline-variant": "#c2c6d6",
+                        "background": "#faf8ff",
+                        "on-primary-fixed-variant": "#00429b",
+                        "surface-tint": "#0058ca",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#151c29",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary-container": "#fefcff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eff0fb",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#555c6c",
+                        "surface-dim": "#d8d9e4",
+                        "inverse-primary": "#b0c6ff",
+                        "on-primary-fixed": "#001944",
+                        "surface-container-low": "#f2f3fe",
+                        "outline": "#727785",
+                        "surface": "#faf8ff",
+                        "primary": "#0056c5",
+                        "secondary": "#585f6a",
+                        "secondary-container": "#dce3f0",
+                        "secondary-fixed-dim": "#c0c7d3",
+                        "on-surface": "#191b23",
+                        "surface-container": "#ecedf8",
+                        "surface-container-high": "#e7e7f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-desktop": "40px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "label-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Manrope"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["26px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pattern-diagonal {
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.15) 4px, rgba(255,255,255,0.15) 8px);
+        }
+        .pattern-diagonal-blue {
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,86,197,0.15) 4px, rgba(0,86,197,0.15) 8px);
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px 0 rgba(0, 86, 197, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface/80 backdrop-blur-md flex justify-between items-center w-full px-margin-desktop py-md max-w-full docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[28px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">corporate_fare</span>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Manage Profile</span>
+</div>
+<div class="hidden md:flex items-center gap-sm">
+<a class="text-on-primary-container bg-primary-container rounded-full px-4 py-2 font-bold text-label-md font-label-md opacity-80 transition-opacity duration-150" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-on-secondary-container px-4 py-2 text-label-md font-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">My Health</a>
+<a class="text-on-surface-variant dark:text-on-secondary-container px-4 py-2 text-label-md font-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Appointments</a>
+<a class="text-on-surface-variant dark:text-on-secondary-container px-4 py-2 text-label-md font-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant dark:text-on-secondary-container px-4 py-2 text-label-md font-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Messages</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border border-outline-variant rounded-full pl-4 pr-10 py-1.5 text-body-md focus:border-primary focus:ring-0 transition-colors w-64" placeholder="Search" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant cursor-pointer">search</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="flex items-center gap-sm ml-sm pl-md border-l border-outline-variant cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User avatar for Admin" class="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a corporate administrator in a bright, modern office setting. The lighting is soft and natural. The person has a friendly but focused expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAotlUGi4Dvma96w69qAyZA0ngJ2kNWfymTZBrYKieD6xKzfX-68bunfcGGngmX1R8YIoq038AAZ-zYnb12XPs15hqQrt8JfTIhhsBUBlf_AShmUSrZL58wcZJvDNxbtWtdbBYt9BMhkIlCWuP2yzUZ7WnE-7O-3jVDTsejGL7VOJ3mbfTxqOBZK3q1eJy3PEuoozPaM2NslYrm14Jko9U2GfcKp3jwevm9_yYQ0KkmkwTVS3tVo5mesA"/>
+<div class="hidden sm:block">
+<p class="text-label-md font-label-md text-on-surface font-bold">Admin</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">admin@company.com</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="px-margin-desktop py-lg max-w-[1440px] mx-auto flex flex-col gap-lg">
+<!-- Welcome Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-1">Welcome back, Admin</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Here is your company's profile performance summary.</p>
+</div>
+<button class="bg-primary hover:bg-surface-tint text-on-primary rounded-full px-6 py-2.5 flex items-center gap-sm transition-colors self-start md:self-auto font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Update
+            </button>
+</header>
+<!-- Filters (Mock) -->
+<div class="flex flex-wrap gap-sm">
+<button class="bg-surface-container-low text-on-surface border border-outline-variant rounded-full px-4 py-1.5 flex items-center gap-2 text-label-md font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span> Filter
+            </button>
+<button class="bg-surface-container-low text-on-surface border border-outline-variant rounded-full px-4 py-1.5 flex items-center gap-2 text-label-md font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Monthly <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="bg-surface-container-low text-on-surface border border-outline-variant rounded-full px-4 py-1.5 flex items-center gap-2 text-label-md font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span> Download Summary
+            </button>
+<div class="flex-grow"></div>
+<button class="bg-surface-container-low text-on-surface border border-outline-variant rounded-full px-4 py-1.5 flex items-center gap-2 text-label-md font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">dashboard_customize</span> Customize View
+            </button>
+</div>
+<!-- Top Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Profile Health -->
+<div class="bg-surface-container-lowest rounded-xl p-lg soft-shadow border border-outline-variant flex flex-col justify-between">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-2">Profile Health</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">Some sections require your attention to reach 100% completeness.</p>
+<a class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">
+                        View Missing Info <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="mt-xl">
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant mb-1">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Completed: 85%</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary-container"></span> Pending: 15%</span>
+</div>
+<div class="h-6 w-full bg-secondary-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary pattern-diagonal" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Visitor Trends -->
+<div class="bg-surface-container-lowest rounded-xl p-lg soft-shadow border border-outline-variant flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Visitor Trends</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<div class="flex-grow flex items-end justify-between gap-2 pt-4 relative">
+<!-- Bars -->
+<div class="w-12 bg-primary rounded-t-lg h-[40%]"></div>
+<div class="w-12 bg-primary rounded-t-lg h-[50%]"></div>
+<div class="w-12 bg-primary-fixed rounded-t-lg h-[80%] pattern-diagonal-blue relative flex items-center justify-center">
+<div class="absolute -top-8 bg-surface-container-lowest shadow-sm rounded px-2 py-1 text-primary font-bold text-label-sm">72%</div>
+</div>
+<div class="w-12 bg-primary rounded-t-lg h-[65%]"></div>
+</div>
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant mt-2 px-2">
+<span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+<!-- Recent Inquiries -->
+<div class="bg-surface-container-lowest rounded-xl p-lg soft-shadow border border-outline-variant lg:col-span-2 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Recent Inquiries</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 -mt-4">Latest messages from the contact form.</p>
+<div class="flex flex-col gap-0 border-l-2 border-outline-variant ml-2">
+<div class="relative pl-6 pb-4">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1 border-2 border-surface-container-lowest"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Partnership Proposal</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Submitted by TechCorp Inc.</p>
+</div>
+<button class="text-primary text-label-md font-label-md hover:underline">View</button>
+</div>
+</div>
+<div class="relative pl-6 pb-4">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1 border-2 border-surface-container-lowest"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Support Request #459</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Submitted by John Doe</p>
+</div>
+<button class="text-primary text-label-md font-label-md hover:underline">Read</button>
+</div>
+</div>
+<div class="relative pl-6">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1 border-2 border-surface-container-lowest"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Media Inquiry</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Submitted by Daily News</p>
+</div>
+<button class="text-primary text-label-md font-label-md hover:underline">Details</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Middle Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Pending Reviews (Modeled after Upcoming Checkups) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg soft-shadow border border-outline-variant flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Pending Reviews</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Item 1 -->
+<div class="border-b border-surface-container pb-4 last:border-0 last:pb-0">
+<div class="flex justify-between items-start mb-2">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">reviews</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Employee Testimonial</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Sarah Jenkins, Design</p>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-error-container/30 text-on-error-container px-2 py-0.5 rounded text-label-sm font-label-sm block mb-1">Needs Review</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2 Days ago</span>
+</div>
+</div>
+<div class="h-2 w-full bg-secondary-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary pattern-diagonal" style="width: 100%"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="border-b border-surface-container pb-4 last:border-0 last:pb-0">
+<div class="flex justify-between items-start mb-2">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">rate_review</span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Client Case Study</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Acme Corp Project</p>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-surface-container-high text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm block mb-1">Draft</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">5 Days ago</span>
+</div>
+</div>
+<div class="h-2 w-full bg-secondary-container rounded-full overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 60%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Schedule (Modeled after Recovery Progress) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg soft-shadow border border-outline-variant lg:col-span-2 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Content Schedule</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">Upcoming blog posts and news releases.</p>
+<div class="flex items-center gap-4 text-label-sm font-label-sm text-on-surface-variant mb-6">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Published</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span> Scheduled</span>
+</div>
+<div class="flex-grow flex items-end justify-between gap-4 relative min-h-[150px]">
+<!-- Chart visualization placeholder matching image -->
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full max-w-[40px] bg-primary-fixed rounded h-8"></div>
+<div class="w-full max-w-[40px] bg-primary rounded-t-lg h-16 pattern-diagonal-blue"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full max-w-[40px] bg-primary-fixed rounded h-12"></div>
+<div class="w-full max-w-[40px] bg-primary rounded-t-lg h-12 pattern-diagonal-blue"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full max-w-[40px] bg-primary-fixed rounded h-16"></div>
+<div class="w-full max-w-[40px] bg-primary rounded-t-lg h-20 pattern-diagonal-blue"></div>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center">
+<div class="w-full max-w-[40px] bg-primary-fixed rounded h-10"></div>
+<div class="w-full max-w-[40px] bg-primary rounded-t-lg h-24 pattern-diagonal-blue"></div>
+</div>
+</div>
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant mt-4 border-t border-surface-container pt-2">
+<span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2 text-center">Q4 shows the highest volume of scheduled releases.</p>
+</div>
+</div>
+<!-- Bottom Section: Company Team -->
+<div class="bg-surface-container-lowest rounded-xl p-lg soft-shadow border border-outline-variant">
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Company Team</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">Core team members visible on the public profile.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Team Member 1 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Dr. Leslie" class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a corporate executive, smiling slightly, wearing a business suit, well lit, modern office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8rR37lDnFs0JVEyYY1we-Bm5UUdH_JbKdq5euOym-_Elf6g708yrmAGxuZswmNhyBoTL7TTRNnknt8-sVVAhj0y7wu_uaWBMkz1nGn_mu3dDzaJI1uYj5qg8HlAepYulizNg0FmmYjS35yNC7kxCFfAQXTVbFMZVROhvq5t3eBT83zW6C9b5pFSx6gqSdILIshJ-rjoGs2LfDpPYFfg5WPx-T-ur9NkBbB1RFgnNpIM-DT60CwvE2xA"/>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Dr. Leslie</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">CEO</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">mail</span></button>
+</div>
+<!-- Team Member 2 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Dr. Maria Chen" class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a female executive, confident expression, wearing a smart blouse, bright modern office setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpjKSd_5il_PwqGTcfoyl1GHk23uTiDXKy3Gcymor5N8JyhBQRLaHjOanh6zoYzCE_uJOKh1Td0-wgJbsOaq78CQmmEsf8NSAqMWpZFKPI8P47oOFd6NTPBJOBmNPAIxaA4zFbosIKKJ_7FUxWm52N-fSFCtA69Mj14hBLa6ERl-28muDnt_koUXLwNtSEtVSHl6OUwWT7pydgwKVaeDZVPRDJexQoEytqcXj7-SsIsENDSG7iJqaNGA"/>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Dr. Maria Chen</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">CTO</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">mail</span></button>
+</div>
+<!-- Team Member 3 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="James Patel" class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a young male professional, smiling, casual business attire, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVgTp89lqbHi8ZVrCug7WLVtN1fc34zmJTe5z9aeuqFRvNSqU7x7uKezZnm3332Bh6cRbigeEoQUieeTyDPqkQeXHgSAGFrzqFhAXhvV8WwPTi55tvGh72eZu3sDtIQGxfa9zLEUBZVCQdgxuLwBfKgqf1gJRo_kMdZgri3VZ5Q4wHd58JfCfaEdTMt56tcRog-a0VGpV0Ysb7mXBJC0IxonZ9N4o5ZS2aoTUzsGLUf3Z0kSgvEtKeBg"/>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">James Patel</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Marketing Dir.</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">mail</span></button>
+</div>
+<!-- Team Member 4 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Emily Tran" class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a female professional, warm smile, wearing a blazer, bright office background with subtle depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvklAHwXJYbL1LN7mTqMY1P0GZDamshUf4GgNtmrRM9wRSstzrpieLxnNodQgTdsy4E-Ni-zcX_6FvSLIgGwYk_g9BQyHxiuYwr5fNig6vWDKHGdMEN3brr4_0DUwMXMEGlNwlep0I0Q5estruRRXOcA7Pif-oJBGDW1UgmJYDx_25MPaGu6L2rD692NEnP0Q9kWrhSP6iK86zkxm2sV5QB5ghUxQ6qYJDP--x1GZDGaedP9P5lRps_Q"/>
+<div>
+<h3 class="text-label-md font-label-md text-on-surface">Emily Tran</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Head of HR</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">mail</span></button>
+</div>
+</div>
+</div>
+</main>
+</body></html>
